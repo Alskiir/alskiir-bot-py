@@ -1,6 +1,6 @@
-import discord
+import discord, os
+token= os.environ["TOKEN"]
 from discord.ext import commands
-
 
 intents = discord.Intents.all()
 intents.members = True
@@ -12,4 +12,4 @@ async def on_ready():
 
 
 bot.load_extension('cogs.rulesExtension')
-bot.run('a')
+bot.run(token)
