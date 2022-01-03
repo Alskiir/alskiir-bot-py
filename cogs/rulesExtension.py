@@ -7,16 +7,17 @@ from discord.ext import commands
 # change the server ids
 server_list = [875236232303636491]  # alskiir's server id
 
+
 class PersistentView(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
-    
+
     @discord.ui.button(
-        label='Green',
+        label='Join the fun!',
         style=discord.ButtonStyle.primary,
         custom_id='persistent_view:rules'
     )
-    async def green(self,button:discord.ui.Button,interaction: discord.Integration):
+    async def green(self, button: discord.ui.Button, interaction: discord.Integration):
         # gets the user who clicked the button
         user = interaction.user
         # role id
@@ -27,7 +28,7 @@ class PersistentView(discord.ui.View):
         if role not in user.roles:
             await user.add_roles(role)
             await interaction.response.send_message(f'Welcome in!', ephemeral=True)
-        
+
 
 class Alskiir(commands.Cog):
     def __init__(self, bot):
