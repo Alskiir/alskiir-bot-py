@@ -1,17 +1,22 @@
 import discord
 from discord.ext.commands import view
+from discord.ext.commands.core import command
 from discord.ui import Button, View
 from discord.ext import commands
 
 # change the server ids
 server_list = [875236232303636491]  # alskiir's server id
 
-
-class myButtons(Button):
-    def __init__(self, style, label):
-        super().__init__(style=style, label=label)
-
-    async def callback(self, interaction):
+class PersistentView(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+    
+    @discord.ui.button(
+        label='Green',
+        style=discord.ButtonStyle.primary,
+        custom_id='persistent_view:rules'
+    )
+    async def green(self,button:discord.ui.Button,interaction: discord.Integration):
         # gets the user who clicked the button
         user = interaction.user
         # role id
@@ -22,25 +27,19 @@ class myButtons(Button):
         if role not in user.roles:
             await user.add_roles(role)
             await interaction.response.send_message(f'Welcome in!', ephemeral=True)
-
+        
 
 class Alskiir(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # @commands.user_command(name='alskiir',guild_ids=server_list)
+    @commands.Cog.listener()
+    async def on_ready(self):
+        self.bot.add_view(PersistentView())
+
     @commands.command(name='alskiir')
     async def alskiir(self, ctx):
         title = 'Welcome!'
-        # desc=u'''
-        # **Get Your Role!**
-
-        # the button below to get your role and see the rest of the server!
-
-        # **For Twitch Subscribers!**
-
-        # Link your Twitch account to your Discord account for emotes and roles!
-        # '''
         desc = '-----------------------'
         embed = discord.Embed(title=title, description=desc)
         embed.set_image(
@@ -50,11 +49,7 @@ class Alskiir(commands.Cog):
         embed.add_field(name='For Twitch Subscribers!',
                         value='Link your Twitch account to your Discord account for emotes and roles!')
         embed.color = discord.Color.from_rgb(31, 175, 197)
-        alskiir_button = myButtons(
-            style=discord.ButtonStyle.primary, label='Join the Fun!')
-        view = View()
-        view.add_item(alskiir_button)
-        await ctx.send(embed=embed, view=view)
+        await ctx.send(embed=embed, view=PersistentView())
 
 
 def setup(bot):
