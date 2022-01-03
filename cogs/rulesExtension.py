@@ -1,4 +1,6 @@
 import discord
+from discord import permissions
+from discord.commands.permissions import permission
 from discord.ext.commands import view
 from discord.ext.commands.core import command
 from discord.ui import Button, View
@@ -35,10 +37,11 @@ class Alskiir(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
+    @permissions.has_role('875240659311800340')
     async def on_ready(self):
         self.bot.add_view(PersistentView())
 
-    @commands.command(name='alskiir')
+    @commands.command(name='getrules')
     async def alskiir(self, ctx):
         title = 'Welcome!'
         desc = '-----------------------'
