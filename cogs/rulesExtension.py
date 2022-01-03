@@ -32,17 +32,20 @@ class Alskiir(commands.Cog):
     @commands.command(name='alskiir')
     async def alskiir(self, ctx):
         title = 'Welcome!'
-        desc=u'''
-        **Get Your Role!**
+        # desc=u'''
+        # **Get Your Role!**
 
-        the button below to get your role and see the rest of the server!
+        # the button below to get your role and see the rest of the server!
     
-        **For Twitch Subscribers!**
+        # **For Twitch Subscribers!**
         
-        Link your Twitch account to your Discord account for emotes and roles!
-        '''
+        # Link your Twitch account to your Discord account for emotes and roles!
+        # '''
+        desc='-----------------------'
         embed = discord.Embed(title=title,description=desc)
         embed.set_image(url='https://cdn.discordapp.com/attachments/484432102402555935/926974132539781140/no-background-shadow-cropped.png')
+        embed.add_field(name='Get Your Role!', value= 'Select the button below to get your role and see the rest of the server!')
+        embed.add_field(name='For Twitch Subscribers!', value='Link your Twitch account to your Discord account for emotes and roles!' )
         alskiir_button = myButtons(style=discord.ButtonStyle.primary,label='Join the Fun!')
         view = View()
         view.add_item(alskiir_button)
