@@ -43,6 +43,9 @@ class Alskiir(commands.Cog):
     @commands.command(name='getrules')
     @permissions.has_role('875240659311800340')
     async def alskiir(self, ctx):
+        role = ctx.guild.getrole(875240659311800340)
+        if role not in ctx.member.roles:
+            return
         title = 'Welcome!'
         desc = '-----------------------'
         embed = discord.Embed(title=title, description=desc)
