@@ -21,10 +21,7 @@ class myButtons(Button):
 
         if role not in user.roles:
             await user.add_roles(role)
-            await interaction.response.send_message(f'given role {role.mention}', ephemeral=True)
-        else:
-            await user.remove_roles(role)
-            await interaction.response.send_message(f'taken role {role.mention}', ephemeral=True)
+            await interaction.response.send_message(f'Welcome in!', ephemeral=True)
 
 
 class Alskiir(commands.Cog):
