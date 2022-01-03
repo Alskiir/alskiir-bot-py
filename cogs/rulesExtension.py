@@ -41,11 +41,11 @@ class Alskiir(commands.Cog):
         self.bot.add_view(PersistentView())
 
     @commands.command(name='getrules')
-    @permissions.has_role(875240659311800340)
+    # @permissions.has_role(875240659311800340)
     async def alskiir(self, ctx):
-        # role = ctx.guild.get_role(875240659311800340)
-        # if role not in ctx.author.roles:
-        #     return
+        role = ctx.guild.get_role(875240659311800340)
+        if role not in ctx.author.roles:
+            return
         title = 'Welcome!'
         desc = '-----------------------'
         embed = discord.Embed(title=title, description=desc)
