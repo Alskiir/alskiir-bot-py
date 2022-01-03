@@ -52,7 +52,7 @@ class Alskiir(commands.Cog):
                         value='Select the button below to get your role and see the rest of the server!')
         embed.add_field(name='For Twitch Subscribers!',
                         value='Link your Twitch account to your Discord account for emotes and roles!')
-        embed.color = discord.Color.from_rgb((31, 175, 197))
+        embed.color = discord.Color.from_rgb(31, 175, 197)
         alskiir_button = myButtons(
             style=discord.ButtonStyle.primary, label='Join the Fun!')
         view = View()
