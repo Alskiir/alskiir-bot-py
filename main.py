@@ -21,7 +21,7 @@ async def main():
         await bot.load_extension('cogs.rulesExtension')
         await bot.start(token)
 
-
+keep_alive()
 asyncio.run(main())
 
 # bot.load_extension('cogs.rulesExtension')
