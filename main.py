@@ -16,7 +16,7 @@ async def on_ready():
 
 async def main():
     async with bot:
-        bot.load_extension('cogs.rulesExtension')
+        await bot.load_extension('cogs.rulesExtension')
         await bot.start(token)
 
 asyncio.run(main())
