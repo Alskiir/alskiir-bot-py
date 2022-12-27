@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import os
 import asyncio
+
 token = os.environ["TOKEN"]
 
 intents = discord.Intents.all()
@@ -18,6 +19,7 @@ async def main():
     async with bot:
         await bot.load_extension('cogs.rulesExtension')
         await bot.start(token)
+
 
 asyncio.run(main())
 
