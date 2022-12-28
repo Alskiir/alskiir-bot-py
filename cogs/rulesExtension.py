@@ -13,8 +13,8 @@ class PersistentView(discord.ui.View):
     @discord.ui.button(label='Join the fun!',
                        style=discord.ButtonStyle.primary,
                        custom_id='persistent_view:rules')
-    async def green(self, button: discord.ui.Button,
-                    interaction: discord.Integration):
+    async def green(self, interaction: discord.Interaction,
+                    button: discord.Button):
         # gets the user who clicked the button
         user = interaction.user
         # role id
